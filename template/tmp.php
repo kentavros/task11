@@ -22,7 +22,7 @@
         </div>
     </div>
 </nav>
-
+<?=$msg? '<p class="alert-danger">'.$msg : '</p>'?>
 
 
 

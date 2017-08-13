@@ -20,6 +20,18 @@ define('ERROR_QUERY', 'Error query! ');
 //No row
 define('NO_ROW', 'No row - user6');
 
+//No filds
+define('NO_FIELD', 'No field in this name!');
+
+//The record with such a key is exist in the table!
+define('ERROR_REC', 'The record with such a key and data is exist in the table!');
+
+//Data updated
+define('DATA_UPDATED', 'Data updated in table');
+
+//Data saved
+define ('DATA_SAVED', 'The data save success');
+
 
 
 /**

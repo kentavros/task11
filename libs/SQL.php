@@ -23,8 +23,7 @@ class SQL
     {
        if ($columName !== '*')
        {
-           $this->selectProp = "SELECT \"".$columName."\""; //for work pg (" for class)
-           //$this->selectProp = "SELECT ".$columName; //for work pg (" for class)
+           $this->selectProp = "SELECT ".$columName;
            return $this;
        }
 
@@ -37,8 +36,7 @@ class SQL
      */
     public function from($tableName)
 	{
-		$this->fromProp = " FROM \"".$tableName."\"";//for work pg(" for class)
-//		$this->fromProp = " FROM ".$tableName;
+		$this->fromProp = " FROM ".$tableName;
 		return $this;
 	}
 
@@ -48,17 +46,10 @@ class SQL
      * @param $tableName
      * @return $this
      */
-    public function where($val, $tableName){
-        if ($tableName == PG_TB_NAME)
-        {
-            $this->whereProp = " WHERE \"key\"="."'".$val."'";//for work pg(" for class)
-//            $this->whereProp = " WHERE key="."'".$val."'";
-            return $this;
-        } else
-        {
+    public function where($val)
+    {
             $this->whereProp = " WHERE `key`="."'".$val."'";
             return $this;
-        }
     }
 
     /**
@@ -66,21 +57,10 @@ class SQL
      * @param $tableName
      * @return $this
      */
-    public function insertInto($tableName)
+    public function insertInto($tableName, $fields)
     {
-        if ($tableName == PG_TB_NAME)
-        {
-            $this->insertProp = "INSERT INTO \"".$tableName."\" (\"key\", \"data\")"; //for work pg(" for class)
-//            $this->insertProp = "INSERT INTO ".$tableName." (key, data)";
-            $this->flag = 1;
+            $this->insertProp = "INSERT INTO ".$tableName." (".$fields.")";
             return $this;
-        }
-        else
-        {
-            $this->insertProp = "INSERT INTO ".$tableName." (`key`, `data`)"; //PROVERITb NA RABOTE!!!!!!
-            return $this;
-        }
-
     }
 
     /**
@@ -89,9 +69,9 @@ class SQL
      * @param $data
      * @return $this
      */
-    public function values($key, $data)
+    public function values($values)
     {
-        $this->valuesProp = " VALUES ('".$key."', '".$data."')";
+        $this->valuesProp = " VALUES (".$values.")";
         return $this;
     }
 
@@ -102,7 +82,6 @@ class SQL
     public function delete()
     {
         $this->deleteProp = "DELETE";
-        $this->flag = 1;
         return $this;
     }
 
@@ -113,9 +92,7 @@ class SQL
      */
     public function update($tableName)
     {
-        $this->updateProp = "UPDATE \"".$tableName."\""; //PROVERITb NA RABOTE!!!!!!
-//        $this->updateProp = "UPDATE ".$tableName; //PROVERITb NA RABOTE!!!!!!
-        $this->flag = 1;
+        $this->updateProp = "UPDATE ".$tableName;
         return $this;
     }
 
@@ -126,18 +103,10 @@ class SQL
      * @param $tableName
      * @return $this
      */
-    public function set($field, $value, $tableName)
+    public function set($field, $value)
     {
-        if ($tableName == PG_TB_NAME)
-        {
-            $this->setProp = " SET ".$field."='".$value."'";       
-            return $this;
-        } 
-        else
-        {
             $this->setProp = " SET `".$field."`='".$value."'";
             return $this;
-        }
     }
 
     /**
