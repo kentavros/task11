@@ -115,7 +115,6 @@ class SQL
      */
     public function exec()
     {
-
         if (!empty($this->selectProp)) {
             if ((!empty($this->fromProp)) && (!empty($this->whereProp))) {
                 $this->queryProp = $this->selectProp . $this->fromProp . $this->whereProp;
@@ -160,12 +159,6 @@ class SQL
         {
             return NO_PROPERTIES;
         }
-
     }
-
 }
-
-
-
-
 ?>

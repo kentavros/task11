@@ -11,7 +11,7 @@ class MyTest extends ActiveRecord
             throw new Exception(ERROR_CONNECT . mysqli_connect_error());
         }
         //GEt columns name from table
-        $this->getColumName();
+        $this->setColumName();
     }
 
 }

@@ -32,6 +32,9 @@ define('DATA_UPDATED', 'Data updated in table');
 //Data saved
 define ('DATA_SAVED', 'The data save success');
 
+//This Key not found
+define('NO_KEY', 'Key not found!');
+
 
 
 /**
